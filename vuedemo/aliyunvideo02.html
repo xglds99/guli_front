@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://g.alicdn.com/de/prismplayer/2.8.1/skins/default/aliplayer-min.css"
+    />
+    <script
+      charset="utf-8"
+      type="text/javascript"
+      src="https://g.alicdn.com/de/prismplayer/2.8.1/aliplayer-min.js"
+    ></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="prism-player" id="J_prismPlayer"></div>
+    <script>
+      var player = new Aliplayer(
+        {
+          id: 'J_prismPlayer',
+          width: '100%',
+          autoplay: false,
+          cover: 'http://liveroom-img.oss-cn-qingdao.aliyuncs.com/logo.png',
+          //播放配置
+          encryptType: '1', //如果播放加密视频，则需设置encryptType=1，非加密视频无需设置此项
+          vid: '视频id',
+          playauth: '视频授权码',
+        },
+        function (player) {
+          console.log('播放器创建好了。')
+        }
+      )
+    </script>
+  </body>
+</html>

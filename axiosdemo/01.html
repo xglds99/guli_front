@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <table border="1px">
+            <th>姓名</th>
+            <th>年龄</th>
+            
+            <tr v-for="user in userList">
+                <td>{{user.name}}</td>
+                <td>{{user.age}}</td>
+            </tr>
+        </table>
+          <el-button type="success">成功按钮</el-button>
+    </div>
+    <script src="vue.min.js"></script>
+    <script src="axios.min.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {  //在data定义变量和初始值
+                userList:[]
+            },
+            created(){ //数据渲染之前执行
+                //调用定义的方法
+                this.getUserList()
+            },
+            methods:{
+                //创建方法，查询所有用户数据
+                getUserList(){
+                    //使用axios发送ajax请求
+                    //axios.提交方式(url).then().catch()
+                axios.get("data.json")
+                .then(response =>{
+                    //response就是请求之后返回的数据 
+                    //console.lo(response)
+                    this.userList = response.data.data.items
+                })  //请求成功执行then
+                .catch(error =>{
+
+                })    //请求失败执行catch方法
+
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
